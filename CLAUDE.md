@@ -81,3 +81,47 @@ This is a Laravel 12 application with Laravel Breeze authentication, Vue.js 3 wi
 - If you encounter rollup architecture issues, run: `sail exec laravel.test rm -rf node_modules package-lock.json && sail npm install`
 - TypeScript compilation is handled automatically during build process
 - SSR is enabled by default for better SEO and performance
+
+## Multilingual Course Implementation
+
+### Course Workflow Process
+**Objetivo**: Implementar soporte para múltiples lenguajes en Laravel siguiendo un curso estructurado.
+
+**Workflow establecido**:
+1. **Durante cada clase**: Tomar notas detalladas del proceso de implementación
+2. **Al finalizar cada clase**:
+   - Actualizar este documento con el registro de lo aprendido/implementado
+   - Generar commit con mensaje descriptivo de la clase
+   - Push a GitHub para mantener historial
+
+**Estado actual**: Preparando estructura para comenzar con la primera clase
+
+### Registro de Clases
+
+#### Clase 0: Preparación inicial
+- **Fecha**: 2025-08-04
+- **Estado**: En preparación
+- **Objetivo**: Configurar el entorno y documentar el plan de trabajo
+- **Notas**: 
+  - Proyecto base: Laravel 12 + Breeze + Vue.js + TypeScript + Inertia.js
+  - Framework de testing: PHPUnit 11.5.28 (PEST no compatible con versión actual)
+  - Preparando estructura de documentación para el curso
+
+#### Clase 1: Creación del Enum de Idiomas
+- **Fecha**: 2025-08-04
+- **Estado**: ✅ Completada
+- **Objetivo**: Crear la estructura base para manejar múltiples idiomas
+- **Pasos realizados**:
+  1. Ejecutar `sail artisan lang:publish` para publicar archivos de idioma
+  2. Crear directorio `app/Lang/`
+  3. Crear archivo `app/Lang/Lang.php` con enum para idiomas
+- **Implementación**:
+  - Enum `Lang` con 4 idiomas: EN, ES, IT, PT
+  - Método `label()` que retorna nombres en idioma nativo:
+    - English, Español, Italiano, Português
+  - Estructura preparada para uso en frontend con lista amigable
+- **Archivos creados**:
+  - `app/Lang/Lang.php` - Enum principal de idiomas
+
+---
+*Próximas clases se documentarán aquí siguiendo el mismo formato*
