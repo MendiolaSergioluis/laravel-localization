@@ -123,5 +123,25 @@ This is a Laravel 12 application with Laravel Breeze authentication, Vue.js 3 wi
 - **Archivos creados**:
   - `app/Lang/Lang.php` - Enum principal de idiomas
 
+#### Clase 2: Compartir idiomas con el frontend via Inertia
+- **Fecha**: 2025-08-06
+- **Estado**: ✅ Completada
+- **Objetivo**: Hacer disponibles los idiomas en el frontend mediante Inertia.js
+- **Pasos realizados**:
+  1. Crear `LanguageResource` para transformar datos del enum
+  2. Configurar `AppServiceProvider` para remover wrapping de recursos JSON
+  3. Modificar `HandleInertiaRequests` para compartir idiomas globalmente
+  4. Probar visualización en Dashboard del frontend
+- **Implementación**:
+  - `LanguageResource`: Transforma enum Lang en formato JSON con 'value' y 'label'
+  - `AppServiceProvider`: `JsonResource::withoutWrapping()` para formato limpio
+  - `HandleInertiaRequests`: Compartir `languages` collection globalmente
+  - `Dashboard.vue`: Mostrar datos de idiomas para verificar funcionamiento
+- **Archivos modificados**:
+  - `app/Http/Resources/LanguageResource.php` - Nuevo recurso JSON
+  - `app/Providers/AppServiceProvider.php` - Configuración JSON sin wrapping
+  - `app/Http/Middleware/HandleInertiaRequests.php` - Compartir idiomas
+  - `resources/js/Pages/Dashboard.vue` - Test de visualización
+
 ---
 *Próximas clases se documentarán aquí siguiendo el mismo formato*

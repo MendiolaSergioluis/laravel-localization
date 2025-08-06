@@ -2,9 +2,11 @@
 
 namespace App\Http\Middleware;
 
+use App\Lang\Lang;
 use Illuminate\Http\Request;
 use Inertia\Middleware;
 use Tighten\Ziggy\Ziggy;
+use App\Http\Resources\LanguageResource;
 
 class HandleInertiaRequests extends Middleware
 {
@@ -35,6 +37,7 @@ class HandleInertiaRequests extends Middleware
             'auth' => [
                 'user' => $request->user(),
             ],
+            'languages' => LanguageResource::collection(Lang::cases()),
             'ziggy' => fn () => [
                 ...(new Ziggy)->toArray(),
                 'location' => $request->url(),
