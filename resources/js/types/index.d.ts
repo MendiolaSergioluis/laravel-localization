@@ -13,5 +13,12 @@ export type PageProps<
     auth: {
         user: User;
     };
+    language: string;
+    languages: [
+        {
+            value: string;
+            label: string;
+        }
+    ];
     ziggy: Config & { location: string };
 };

@@ -143,5 +143,24 @@ This is a Laravel 12 application with Laravel Breeze authentication, Vue.js 3 wi
   - `app/Http/Middleware/HandleInertiaRequests.php` - Compartir idiomas
   - `resources/js/Pages/Dashboard.vue` - Test de visualización
 
+#### Clase 3: Implementar selector de idiomas en la interfaz
+- **Fecha**: 2025-08-06
+- **Estado**: ✅ Completada
+- **Objetivo**: Crear selector de idiomas funcional en el layout autenticado
+- **Pasos realizados**:
+  1. Compartir idioma actual (`language`) desde backend
+  2. Definir tipos TypeScript para nuevas props
+  3. Implementar dropdown de idiomas en `AuthenticatedLayout`
+  4. Configurar preselección del idioma actual
+- **Implementación**:
+  - `HandleInertiaRequests`: Agregar `app()->getLocale()` como prop `language`
+  - `index.d.ts`: Definir tipos para `language` (string) y `languages` (array)
+  - `AuthenticatedLayout.vue`: Dropdown con `select` HTML nativo
+  - Preselección automática del idioma actual usando `selected` attribute
+- **Archivos modificados**:
+  - `app/Http/Middleware/HandleInertiaRequests.php` - Compartir idioma actual
+  - `resources/js/types/index.d.ts` - Definir tipos TypeScript
+  - `resources/js/Layouts/AuthenticatedLayout.vue` - Selector de idiomas
+
 ---
 *Próximas clases se documentarán aquí siguiendo el mismo formato*
