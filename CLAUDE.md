@@ -206,5 +206,39 @@ This is a Laravel 12 application with Laravel Breeze authentication, Vue.js 3 wi
   - `app/Http/Middleware/SetLanguage.php` - Nuevo middleware
   - `bootstrap/app.php` - Registro del middleware usando `web(append:)`
 
+#### Clase 6: Implementar sistema completo de traducciones
+- **Fecha**: 2025-08-07
+- **Estado**: ✅ Completada
+- **Objetivo**: Completar sistema de traducciones compartiendo archivos de idioma con el frontend
+- **Pasos realizados**:
+  1. Crear archivos de traducción de ejemplo para inglés y español
+  2. Implementar carga automática de traducciones en `HandleInertiaRequests`
+  3. Optimizar tipos TypeScript para incluir traducciones
+  4. Configurar sistema de lazy loading para optimizar performance
+- **Implementación**:
+  - **Sistema de traducciones en HandleInertiaRequests**: 
+    - Carga automática de todos los archivos `.php` del directorio `lang/{locale}/`
+    - Conversión a formato dot notation usando `Arr::dot()` para acceso fácil desde frontend
+    - Implementación con lazy loading para evitar carga innecesaria en cada request
+    - Fallback a array vacío si no existe el directorio de idioma
+  - **Archivos de traducción**:
+    - `lang/en/dashboard.php`: Traducciones en inglés con placeholder `:name`
+    - `lang/es/dashboard.php`: Traducciones en español
+  - **Optimizaciones frontend**:
+    - Interface `Language` separada para mejor tipado en TypeScript
+    - Tipo `translations` como `Record<string, string>` para acceso a traducciones
+    - Mostrar traducciones en Dashboard para verificar funcionamiento
+- **Características técnicas**:
+  - **Lazy loading**: Las traducciones solo se cargan cuando se necesitan
+  - **Formato dot notation**: Acceso intuitivo a traducciones anidadas (ej: `auth.failed`)
+  - **Fallback seguro**: Sistema nunca falla, siempre retorna datos válidos
+- **Archivos modificados**:
+  - `app/Http/Middleware/HandleInertiaRequests.php` - Sistema de traducciones completo
+  - `resources/js/types/index.d.ts` - Tipos optimizados para traducciones
+  - `resources/js/Pages/Dashboard.vue` - Mostrar traducciones para test
+- **Archivos nuevos**:
+  - `lang/en/dashboard.php` - Traducciones en inglés
+  - `lang/es/dashboard.php` - Traducciones en español
+
 ---
 *Próximas clases se documentarán aquí siguiendo el mismo formato*

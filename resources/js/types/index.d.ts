@@ -7,6 +7,11 @@ export interface User {
     email_verified_at?: string;
 }
 
+export interface Language {
+    value: string;
+    label: string;
+}
+
 export type PageProps<
     T extends Record<string, unknown> = Record<string, unknown>,
 > = T & {
@@ -14,11 +19,7 @@ export type PageProps<
         user: User;
     };
     language: string;
-    languages: [
-        {
-            value: string;
-            label: string;
-        }
-    ];
+    languages: Language[];
+    translations: Record<string, string>;
     ziggy: Config & { location: string };
 };

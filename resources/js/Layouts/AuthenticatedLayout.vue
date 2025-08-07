@@ -44,7 +44,7 @@ function onLanguageChange(event: Event) {
 
                         <div class="hidden sm:ms-6 sm:flex sm:items-center sm:ml-6">
                             <!-- Language Dropdown -->
-                            <div class="relative ml-3 relative">
+                            <div class="relative ml-3">
                                 <select name="language" id="language" v-on:change="onLanguageChange">
                                     <option v-for="language in $page.props.languages" :value="language.value"
                                         :key="language.value" :selected="language.value === $page.props.language">
