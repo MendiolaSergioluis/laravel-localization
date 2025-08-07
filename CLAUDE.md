@@ -162,5 +162,26 @@ This is a Laravel 12 application with Laravel Breeze authentication, Vue.js 3 wi
   - `resources/js/types/index.d.ts` - Definir tipos TypeScript
   - `resources/js/Layouts/AuthenticatedLayout.vue` - Selector de idiomas
 
+#### Clase 4: Funcionalidad de cambio de idioma
+- **Fecha**: 2025-08-07
+- **Estado**: ✅ Completada
+- **Objetivo**: Implementar funcionalidad para cambiar y persistir el idioma seleccionado
+- **Pasos realizados**:
+  1. Crear controlador `LanguageStoreController` para manejar cambios de idioma
+  2. Agregar ruta POST para el cambio de idioma
+  3. Implementar evento de cambio en el selector del frontend
+  4. Configurar validación usando el enum Lang
+- **Implementación**:
+  - `LanguageStoreController`: Controlador invokable que valida idioma usando `Lang::tryFrom()`
+  - Almacenamiento en sesión con `session()->put('language', $locale)`
+  - Validación con fallback al idioma por defecto si el valor no es válido
+  - `AuthenticatedLayout.vue`: Evento `onChange` que envía POST request usando `router.post()`
+  - Integración con helper `route()` para generar URLs
+- **Archivos creados/modificados**:
+  - `app/Http/Controllers/LanguageStoreController.php` - Nuevo controlador
+  - `routes/web.php` - Nueva ruta `/languate` (POST)
+  - `resources/js/Layouts/AuthenticatedLayout.vue` - Función `onLanguageChange`
+  - `resources/js/Pages/Dashboard.vue` - Limpieza de código de prueba
+
 ---
 *Próximas clases se documentarán aquí siguiendo el mismo formato*

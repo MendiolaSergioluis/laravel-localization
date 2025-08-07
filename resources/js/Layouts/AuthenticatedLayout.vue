@@ -5,9 +5,18 @@ import Dropdown from '@/Components/Dropdown.vue';
 import DropdownLink from '@/Components/DropdownLink.vue';
 import NavLink from '@/Components/NavLink.vue';
 import ResponsiveNavLink from '@/Components/ResponsiveNavLink.vue';
-import { Link } from '@inertiajs/vue3';
+import { Link, router } from '@inertiajs/vue3';
+
 
 const showingNavigationDropdown = ref(false);
+
+function onLanguageChange(event: Event) {
+    const target = event.target as HTMLSelectElement | null;
+    if (target) {
+        router.post(route('language.store', { language: target.value }));
+    }
+}
+
 </script>
 
 <template>
@@ -36,13 +45,9 @@ const showingNavigationDropdown = ref(false);
                         <div class="hidden sm:ms-6 sm:flex sm:items-center sm:ml-6">
                             <!-- Language Dropdown -->
                             <div class="relative ml-3 relative">
-                                <select name="language" id="language">
-                                    <option
-                                        v-for="language in $page.props.languages"
-                                        :value="language.value"
-                                        :key="language.value"
-                                        :selected="language.value === $page.props.language"
-                                        >
+                                <select name="language" id="language" v-on:change="onLanguageChange">
+                                    <option v-for="language in $page.props.languages" :value="language.value"
+                                        :key="language.value" :selected="language.value === $page.props.language">
                                         {{ language.label }}
                                     </option>
                                 </select>
