@@ -183,5 +183,28 @@ This is a Laravel 12 application with Laravel Breeze authentication, Vue.js 3 wi
   - `resources/js/Layouts/AuthenticatedLayout.vue` - Función `onLanguageChange`
   - `resources/js/Pages/Dashboard.vue` - Limpieza de código de prueba
 
+#### Clase 5: Implementar middleware SetLanguage para Laravel 12
+- **Fecha**: 2025-08-07
+- **Estado**: ✅ Completada
+- **Objetivo**: Configurar middleware para establecer el idioma automáticamente en cada request
+- **Pasos realizados**:
+  1. Crear middleware `SetLanguage` para establecer el locale de la aplicación
+  2. Registrar middleware en `bootstrap/app.php` (nueva estructura en Laravel 12)
+  3. Configurar orden correcto del middleware en la pila web
+- **Implementación**:
+  - `SetLanguage.php`: Middleware que lee idioma de la sesión usando `session()->get('language')`
+  - Validación con `Lang::tryFrom()` y fallback a `config('app.locale')` si no es válido
+  - Establecimiento del locale con `app()->setLocale($locale)`
+  - Registro en `bootstrap/app.php` usando `$middleware->web(append:)`
+- **Métodos de middleware en Laravel 12**:
+  - `append()` - Agregar middleware al final de la pila global
+  - `prepend()` - Agregar middleware al inicio de la pila global  
+  - `web(append:)` - Agregar middleware al grupo web
+  - `api(append:)` - Agregar middleware al grupo API
+  - `priority()` - Definir orden específico de ejecución de middleware
+- **Archivos creados/modificados**:
+  - `app/Http/Middleware/SetLanguage.php` - Nuevo middleware
+  - `bootstrap/app.php` - Registro del middleware usando `web(append:)`
+
 ---
 *Próximas clases se documentarán aquí siguiendo el mismo formato*
