@@ -240,5 +240,38 @@ This is a Laravel 12 application with Laravel Breeze authentication, Vue.js 3 wi
   - `lang/en/dashboard.php` - Traducciones en inglés
   - `lang/es/dashboard.php` - Traducciones en español
 
+#### Clase 7: Helper de traducciones para Vue.js
+- **Fecha**: 2025-08-08
+- **Estado**: ✅ Completada
+- **Objetivo**: Crear función helper `__()` para facilitar el uso de traducciones desde components Vue.js
+- **Pasos realizados**:
+  1. Crear función helper de traducciones en TypeScript con soporte para placeholders
+  2. Registrar función globalmente en la aplicación Vue.js
+  3. Implementar uso de la función en Dashboard para mostrar mensaje personalizado
+  4. Mejorar documentación del código con comentarios explicativos
+- **Implementación**:
+  - **Helper de traducciones `lang.ts`**:
+    - Función `__()` que accede a `usePage().props.translations` de Inertia.js
+    - Soporte para reemplazo de placeholders usando sintaxis `:placeholder`
+    - Fallback al key original si la traducción no existe
+    - Tipado TypeScript completo con parámetros opcionales
+  - **Integración con Vue.js**:
+    - Registro global en `app.ts` usando `app.config.globalProperties.__`
+    - Disponible en todos los componentes sin necesidad de import
+    - Mantenimiento de import explícito en componentes para mejor IntelliSense
+  - **Uso práctico**:
+    - `Dashboard.vue` ahora muestra saludo personalizado usando `__('dashboard.greeting', { name: user.name })`
+    - Reemplazo automático del placeholder `:name` con el nombre del usuario
+- **Características técnicas**:
+  - **Tipo seguro**: Parámetros tipados con `Record<string, string>`
+  - **Flexible**: Soporte para múltiples placeholders en una sola traducción
+  - **Eficiente**: Acceso directo a props de Inertia sin overhead adicional
+  - **Intuitivo**: Sintaxis similar a Laravel `__()` helper
+- **Archivos creados**:
+  - `resources/js/lang.ts` - Helper function con documentación completa
+- **Archivos modificados**:
+  - `resources/js/app.ts` - Registro global de helper y documentación mejorada
+  - `resources/js/Pages/Dashboard.vue` - Uso del helper para mostrar saludo personalizado
+
 ---
 *Próximas clases se documentarán aquí siguiendo el mismo formato*
