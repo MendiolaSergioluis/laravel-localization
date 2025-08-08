@@ -57,6 +57,18 @@ class HandleInertiaRequests extends Middleware
             // All translation strings for the current locale
             // This loads ALL language files and makes them available in frontend
             // Uses lazy loading (function) to avoid loading on every request
+            // 
+            // OPTIMIZATION: Cache implementation for better performance
+            // To implement caching for translations (future enhancement):
+            // 
+            // 'translations' => function () {
+            //     $locale = app()->getLocale();
+            //     $cacheKey = "translations.{$locale}";
+            //     
+            //     return Cache::remember($cacheKey, 3600, function () use ($locale) {
+            //         // Current translation loading logic goes here
+            //     });
+            // }
             'translations' => function () {
                 // Get the language folder path based on current locale
                 // e.g., /path/to/project/lang/en/ or /path/to/project/lang/es/

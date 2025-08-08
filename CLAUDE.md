@@ -273,5 +273,37 @@ This is a Laravel 12 application with Laravel Breeze authentication, Vue.js 3 wi
   - `resources/js/app.ts` - Registro global de helper y documentación mejorada
   - `resources/js/Pages/Dashboard.vue` - Uso del helper para mostrar saludo personalizado
 
+#### Clase 8: Documentar optimización de cache para traducciones
+- **Fecha**: 2025-08-08
+- **Estado**: ✅ Completada
+- **Objetivo**: Documentar como implementar cache en el sistema de traducciones para optimizar performance
+- **Pasos realizados**:
+  1. Agregar comentarios explicativos sobre implementación de cache
+  2. Documentar el uso de `Cache::remember()` para traducciones
+  3. Especificar tiempo de expiración del cache (1 hora)
+  4. Preparar estructura para futura implementación
+- **Implementación**:
+  - **Comentarios en HandleInertiaRequests**:
+    - Documentación completa de como implementar `Cache::remember()`
+    - Clave de cache específica por idioma: `"translations.{$locale}"`
+    - Tiempo de expiración configurado en 3600 segundos (1 hora)
+    - Estructura preparada para migrar la lógica actual dentro del callback
+  - **Ventajas del cache propuesto**:
+    - Reducir carga de E/O al sistema de archivos en cada request
+    - Mejorar tiempos de respuesta especialmente con muchos archivos de idioma
+    - Cache automático por idioma, permitiendo cambios dinámicos
+    - Expiración automática para permitir actualizaciones de traducciones
+- **Características técnicas**:
+  - **Cache por idioma**: Cada locale tiene su propia entrada en cache
+  - **Lazy loading mantenido**: Solo se carga cache cuando se necesita
+  - **TTL configurable**: 3600 segundos como valor por defecto
+  - **Compatibilidad**: No requiere cambios en el frontend
+- **Notas de implementación**:
+  - Lista para implementar agregando `use Illuminate\Support\Facades\Cache;`
+  - No requiere cambios en base de datos o configuración adicional
+  - Compatible con drivers de cache: file, redis, memcached, etc.
+- **Archivos modificados**:
+  - `app/Http/Middleware/HandleInertiaRequests.php` - Documentación de cache como comentarios
+
 ---
 *Próximas clases se documentarán aquí siguiendo el mismo formato*
